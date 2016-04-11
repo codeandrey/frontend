@@ -1,0 +1,108 @@
+//@import ../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap
+@import ../../bower_components/normalize-scss/sass/_normalize
+//@import lib/base.scss
+@import variables
+
+@import ../../bower_components/susy/sass/_susy
+
+
+@import ../../bower_components/slick-carousel/slick/slick.scss
+
+
+$susy: (math: fluid, columns:12, container: auto, gutters: 0.25, column-width: false, container-position: center, gutter-position: inside, global-box-sizing: border-box, debug: (image: show, color: rgba(#06f, .15), output: background));
+
+
+/* Variables */
+
+$header_bg_color: rgba(#FA5, 0.25)
+$menu_bg_color: #69F
+$content_bg_color: rgba(#ff007f, 0.25)
+$art_bg_color: rgba(#753, 0.25)
+$sb_bg_color: rgba(#dd5566, 0.25)
+$slider_bg_color: rgba(#116688, 0.25)
+$ft_bg_color: rgba(#031f38, 0.25)
+
+@include border-box-sizing;
+
+* 
+	font-family: "Helvetica", sans-serif
+html, body 
+	height: 100%;
+
+body 
+	min-height: 100%
+	margin: auto
+
+.wrap
+	@include container(1140px)
+	// Using Compass Vertical Rhythm
+	@media screen and (max-width: 768px) 
+		margin: 0
+header 
+	@include span(12) 
+	background-color: $header_bg_color
+
+.top_logo
+	@include span(3 of 12) 
+	display: inline-block
+	margin: auto
+	height: 100px
+	line-height: 100px
+	text-align: center
+
+
+@import _menu.sass
+nav	
+	@include span(9 of 12 last) 
+	padding-right: 0
+	ul
+		list-style-type: none
+		float: left
+		margin: 0
+		padding: 0
+		margin: auto
+	li
+		float: left
+		margin: auto
+		a
+			display: inline-block
+			margin: auto
+			background-color: $menu_bg_color
+			padding: 5px 20px
+			&:hover
+				background-color: lighten( $menu_bg_color, 20)
+
+
+
+
+
+	
+.content
+	@include span(8 of 12) 
+	background-color: $content_bg_color
+	float: right
+	@media screen and (max-width: 768px) 
+		@include span(12)
+article 
+	background-color: $art_bg_color
+
+.sidebar
+	@include span(4 of 12 last)  
+	background-color: $sb_bg_color
+	@media screen and (max-width: 768px) 
+		@include span(12)
+
+
+.slider
+	@include span(12)
+	background-color: $slider_bg_color	
+
+footer 
+	@include span(12) 
+	clear: both;
+	background-color: $ft_bg_color
+
+
+
+
+	

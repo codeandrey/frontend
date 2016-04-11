@@ -1,0 +1,22 @@
+{
+  "name": "hcode",
+  "description": "test",
+  "main": "gulpfile.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "*",
+    "jquery": "2.*",
+    "slick-carousel": "^1.5.9",
+    "normalize-scss": "normalize.scss#^4.0.3"
+  },
+  "authors": [
+    "codeandrey <codeandrey@ukr.net>"
+  ]
+}
