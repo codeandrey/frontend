@@ -23,21 +23,24 @@ var path = {
         js: 'build/js/',
         css: 'build/css/',
         img: 'build/img/',
-        fonts: 'build/fonts/'
+        fonts: 'build/fonts/',
+        libs: 'build/libs/'
     },
     src: {
         html: 'src/*.html',
         js: 'src/js/**/*.js',
         style: 'src/sass/main.sass',
         img: 'src/img/**/*.*',
-        fonts: 'src/fonts/**/*.*'
+        fonts: 'src/fonts/**/*.*',
+        libs: 'src/libs/**/*.*'
     },
     watch: {
         html: 'src/**/*.html',
         js: 'src/js/**/*.js',
         style: 'src/sass/**/*.sass',
         img: 'src/img/**/*.*',
-        fonts: 'src/fonts/**/*.*'
+        fonts: 'src/fonts/**/*.*',
+        libs: 'src/libs/**/*.*'
     },
     clean: './build'
 };
@@ -82,7 +85,7 @@ gulp.task('style:build', function () {
         .pipe(sass({
             includePaths: ['src/sass/'],
             outputStyle: 'compressed',
-            sourceMap: true,
+            sourceMap: false,
             errLogToConsole: false
         }))
         .pipe(prefixer())
@@ -109,29 +112,48 @@ gulp.task('fonts:build', function() {
         .pipe(gulp.dest(path.build.fonts))
 });
 
+gulp.task('libs:build', function() {
+    gulp.src(path.src.libs)
+        .pipe(gulp.dest(path.build.libs))
+});
 
 gulp.task('sprite', function() {
    var spriteData = gulp.src('./src/images_sprite/*.png') // путь, откуда берем картинки для спрайта
             .pipe(spritesmith({
                 algorithm: 'top-down',        //алгоритм створення спрайта top-down left-right  diagonal    alt-diagonal    binary-tree
                 padding: 10,                        //отступ між картинками в спрайті
-                imgName: 'sprite.png',
+                imgName: '../img/sprite.png',
                 cssName: 'sprite.css',
-            }));
+            }))
           
-    spriteData.img.pipe(gulp.dest('./src/img/')); // путь, куда сохраняем картинку
+    spriteData.img.pipe(gulp.dest('build/img/')); // путь, куда сохраняем картинку
 
     spriteData.css.pipe(gulp.dest('build/css/')); // путь, куда сохраняем стили  
-});
+    });
 
-gulp.task('build',  [
+gulp.task('allcss:build', function() {
+gulp.src('build/css/*.css')
+        .pipe(cssmin())
+        .pipe(concat('style.min.css'))
+        .pipe(gulp.dest('build/css/'))
+        .pipe(reload({stream: true}));
+    });
+
+
+gulp.task('buildall', ['build'], function() {
+return gulp.start('allcss:build'); });
+
+gulp.task('build', ['clean'], function() {
+    return gulp.start(
+    'sprite',
     'html:build',
     'js:build',
     'style:build',
     'fonts:build',
+    'libs:build',
     'image:build'
-]);
-
+  );
+});
 gulp.task('html', function () {
   gulp.src(path.src.html) 
         .pipe(rigger())
@@ -170,4 +192,6 @@ gulp.task('watch', function(){
 });
 
 
-gulp.task('default', ['sprite', 'build', 'webserver', 'watch']);
+gulp.task('default', ['buildall'],  function() {
+    return gulp.start( 'webserver', 'watch');
+});

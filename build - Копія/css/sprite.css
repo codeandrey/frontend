@@ -1,0 +1,119 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+```html
+<!-- `display: block` sprite -->
+<div class="icon-home"></div>
+
+<!-- `display: inline-block` sprite -->
+<img class="icon-home" />
+```
+*/
+.icon-comp {
+  background-image: url(sprite.png);
+  background-position: 0px -597px;
+  width: 80px;
+  height: 76px;
+}
+.icon-creative {
+  background-image: url(sprite.png);
+  background-position: 0px -772px;
+  width: 138px;
+  height: 80px;
+}
+.icon-facebook-hover {
+  background-image: url(sprite.png);
+  background-position: 0px -59px;
+  width: 40px;
+  height: 40px;
+}
+.icon-facebook {
+  background-image: url(sprite.png);
+  background-position: 0px -109px;
+  width: 40px;
+  height: 40px;
+}
+.icon-g-plus {
+  background-image: url(sprite.png);
+  background-position: 0px -159px;
+  width: 40px;
+  height: 40px;
+}
+.icon-in {
+  background-image: url(sprite.png);
+  background-position: 0px -209px;
+  width: 40px;
+  height: 40px;
+}
+.icon-labels {
+  background-image: url(sprite.png);
+  background-position: 0px -1042px;
+  width: 140px;
+  height: 80px;
+}
+.icon-labs {
+  background-image: url(sprite.png);
+  background-position: 0px -952px;
+  width: 140px;
+  height: 80px;
+}
+.icon-map {
+  background-image: url(sprite.png);
+  background-position: 0px -522px;
+  width: 80px;
+  height: 65px;
+}
+.icon-mute {
+  background-image: url(sprite.png);
+  background-position: 0px -309px;
+  width: 44px;
+  height: 43px;
+}
+.icon-paint {
+  background-image: url(sprite.png);
+  background-position: 0px -683px;
+  width: 78px;
+  height: 79px;
+}
+.icon-pause {
+  background-image: url(sprite.png);
+  background-position: 0px -415px;
+  width: 44px;
+  height: 43px;
+}
+.icon-play {
+  background-image: url(sprite.png);
+  background-position: 0px -468px;
+  width: 46px;
+  height: 44px;
+}
+.icon-play_while {
+  background-image: url(sprite.png);
+  background-position: 0px 0px;
+  width: 17px;
+  height: 17px;
+}
+.icon-premium {
+  background-image: url(sprite.png);
+  background-position: 0px -862px;
+  width: 140px;
+  height: 80px;
+}
+.icon-speach {
+  background-image: url(sprite.png);
+  background-position: 0px -27px;
+  width: 24px;
+  height: 22px;
+}
+.icon-twitter {
+  background-image: url(sprite.png);
+  background-position: 0px -259px;
+  width: 40px;
+  height: 40px;
+}
+.icon-volumute {
+  background-image: url(sprite.png);
+  background-position: 0px -362px;
+  width: 44px;
+  height: 43px;
+}

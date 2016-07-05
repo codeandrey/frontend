@@ -41,7 +41,6 @@
 .pure-toggle-label:active 
 	-webkit-tap-highlight-color: transparent
 
-
 .pure-toggle-label .pure-toggle-icon,
 .pure-toggle-label .pure-toggle-icon:before,
 .pure-toggle-label .pure-toggle-icon:after 
@@ -57,24 +56,31 @@
 	-webkit-transition: all 500ms ease-in-out
 	transition: all 500ms ease-in-out
 
-.pure-toggle-label .pure-toggle-icon 
+.pure-toggle-label .pure-toggle-icon
 	transform: translate3d(-50%, 0px, 0)
 	-webkit-transform: translate3d(-50%, -4px, 0)
+	
+.pure-toggle-label[data-toggle-label='left'] .pure-toggle-icon
+	background-color: transparent
 
 
 .pure-toggle-label .pure-toggle-icon:before 
-	transform: translate3d(-50%, -14px, 0)
-	-webkit-transform: translate3d(-50%, -14px, 0)
+	-ms-transform: translateX(-50%) rotate(45deg)
+	transform: translateX(-50%) rotate(45deg)
+	-webkit-transform: translateX(-50%) translateY(-2px) rotate(-45deg)
+	
 
 
 .pure-toggle-label .pure-toggle-icon:after 	
-	transform: translate3d(-50%, 10px, 0)
-	-webkit-transform: translate3d(-50%, 10px, 0)
+	-ms-transform: translateX(-50%) translateY(-10px) rotate(-45deg)
+	transform: translateX(-50%) translateY(-10px) rotate(-45deg)
+	-webkit-transform: translateX(-50%) translateY(-2px) rotate(45deg)
 
 
 .pure-toggle-label[data-toggle-label='left'] 
 	left: 15px
 	right: auto
+	display: none
 .pure-toggle[data-toggle='left']:checked ~ .pure-toggle-label:not([data-toggle-label='left'])
 	opacity: 0
 	z-index: -1
@@ -86,32 +92,41 @@
 
 
 .pure-toggle[data-toggle='left']:checked ~ .pure-toggle-label[data-toggle-label='left'] .pure-toggle-icon
-	background-color: transparent
+	transform: translate3d(-50%, 0px, 0)
+	-webkit-transform: translate3d(-50%, -4px, 0)
+	background:  #5d809d
+
+
 
 
 .pure-toggle[data-toggle='left']:checked ~ .pure-toggle-label[data-toggle-label='left'] .pure-toggle-icon:before,
 .pure-toggle[data-toggle='left']:checked ~ .pure-toggle-label[data-toggle-label='left'] .pure-toggle-icon:after
-	top: 0
-
+	background:  #5d809d
 
 .pure-toggle[data-toggle='left']:checked ~ .pure-toggle-label[data-toggle-label='left'] .pure-toggle-icon:before
-	-ms-transform: translateX(-50%) rotate(45deg)
-	transform: translateX(-50%) rotate(45deg)
-	-webkit-transform: translateX(-50%) rotate(45deg)
-
+	transform: translate3d(-50%, -14px, 0)
+	-webkit-transform: translate3d(-50%, -14px, 0)
 
 .pure-toggle[data-toggle='left']:checked ~ .pure-toggle-label[data-toggle-label='left'] .pure-toggle-icon:after
-	-ms-transform: translateX(-50%) translateY(-10px) rotate(-45deg)
-	transform: translateX(-50%) translateY(-10px) rotate(-45deg)
-	-webkit-transform: translateX(-50%) translateY(-10px) rotate(-45deg)
-	top: 10px
+	transform: translate3d(-50%, 10px, 0px)
+	-webkit-transform: translate3d(-50%, 10px, -2px)
 
-.pure-toggle[data-toggle='left']:checked ~ .pure-toggle-label[data-toggle-label='left'] + nav
+
+.pure-toggle-label[data-toggle-label='left'] + nav
 	transform: translate(0px, 0px)
 	transition: all 1s ease-in-out
-	
-nav
-	transform: translate(-999px, -999px)
-	transition: all 1s ease-in-out
+	@media screen and (max-width: 768px) 	
+		transform: translate(0px, 0px)
+		transition: all 1s ease-in-out
 
-	
+.pure-toggle[data-toggle='left']:checked ~ .pure-toggle-label[data-toggle-label='left'] + nav
+	@media screen and (max-width: 768px) 	
+		transform: translate(-9990px, -990px)
+		transition: all 1s ease-in-out
+
+.pure-toggle-label[data-toggle-label='left'] 
+	left: 15px
+	right: auto
+	@media screen and (max-width: 768px) 
+		display: block	
+		

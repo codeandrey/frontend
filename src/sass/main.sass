@@ -1,108 +1,574 @@
 //@import ../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap
 @import ../../bower_components/normalize-scss/sass/_normalize
 //@import lib/base.scss
-@import variables
-
+//@import variables
+//@import "../../bower_components/font-awesome/scss/font-awesome.scss"
 @import ../../bower_components/susy/sass/_susy
-
-
-@import ../../bower_components/slick-carousel/slick/slick.scss
-
-
-$susy: (math: fluid, columns:12, container: auto, gutters: 0.25, column-width: false, container-position: center, gutter-position: inside, global-box-sizing: border-box, debug: (image: show, color: rgba(#06f, .15), output: background));
-
+//@import ../../bower_components/slick-carousel/slick/slick.scss
+$susy: (math: fluid, columns:12, container: auto, gutters: 0.25, column-width: false, container-position: center, gutter-position: inside, global-box-sizing: border-box /*, debug: (image: show, color: rgba(#000, .15), output: background)*/);
 
 /* Variables */
-
-$header_bg_color: rgba(#FA5, 0.25)
-$menu_bg_color: #69F
+$header_bg_color: rgba(#ffffff, 1)
+$menu_bg_color: #ffffff
 $content_bg_color: rgba(#ff007f, 0.25)
-$art_bg_color: rgba(#753, 0.25)
-$sb_bg_color: rgba(#dd5566, 0.25)
-$slider_bg_color: rgba(#116688, 0.25)
+$btn_bg_color: rgba(#ffaa00, 1)
+$btn_df_color: rgba(#ffffff, 1)
+//$sb_bg_color: rgba(#dd5566, 0.25)
+//$slider_bg_color: rgba(#116688, 0.25)
 $ft_bg_color: rgba(#031f38, 0.25)
 
+$header_height: 90px
+$header_height_a: 40px
+$viewport_width: 1920
+
+@import _fonts.sass
 @include border-box-sizing;
 
 * 
-	font-family: "Helvetica", sans-serif
+	font-family: "LatoHairline", sans-serif
+
+@function get-vw($target) 
+  	$vw-context: ($viewport_width * 0.01) * 1px;
+  	@return ($target / $vw-context) * 1vw;
+
 html, body 
 	height: 100%;
 
 body 
-	min-height: 100%
+	
 	margin: auto
+a, a:hover
+	text-decoration: none
 
+div
+//	border: 1px red solid
+h1, h2, h3
+	margin: 0
+	text-transform: uppercase
+	color: #fff
+	font-family: "LatoHairline"
+h1
+	font-size: get-vw(65px)
+	margin: 7px  auto
+	@media screen and (max-width: 768px) 
+		$viewport_width: 768
+		font-size: get-vw(70px)
+h2	
+	font-size: get-vw(40px)
+	@media screen and (max-width: 768px) 
+		$viewport_width: 768
+		font-size: get-vw(50px)
+h3
+	font-size: get-vw(28px)
+	font-family: "LatoBold"
+	@media screen and (max-width: 768px) 
+		$viewport_width: 768
+		font-size: get-vw(40px)	
+a
+	color: #fff
+	text-decoration: none		
+span
+	font-family: "LatoRegular"	
 .wrap
-	@include container(1140px)
-	// Using Compass Vertical Rhythm
+	@include container(1200px)
+	height: 100%
+	margin: auto
+	text-align: center
+	position: relative
 	@media screen and (max-width: 768px) 
 		margin: 0
+	@media screen and (max-width: 1199px) 
+		@include span(12) 
+		float: none
+	
 header 
 	@include span(12) 
 	background-color: $header_bg_color
-
+	z-index: 1
+	height: 90px
+	position: absolute
+	padding: 0
+ul
+	padding: 0
+	margin: 0
+li
+	list-style-type: none
+	float: left
+	display: inline-block
 .top_logo
 	@include span(3 of 12) 
 	display: inline-block
+	position: relative
+	z-index: 10
 	margin: auto
-	height: 100px
-	line-height: 100px
+	height: $header_height
+	line-height: $header_height
 	text-align: center
-
+	@media screen and (max-width: 768px) 
+		@include span(12)
 
 @import _menu.sass
 nav	
 	@include span(9 of 12 last) 
+	margin: auto
 	padding-right: 0
+	@media screen and (max-width: 768px) 
+		@include span(12)
+		float: none
+		clear: left
 	ul
-		list-style-type: none
-		float: left
-		margin: 0
-		padding: 0
+		float: right 
 		margin: auto
-	li
-		float: left
-		margin: auto
-		a
-			display: inline-block
-			margin: auto
+		@media screen and (max-width: 768px) 
+			float: none
+		li
 			background-color: $menu_bg_color
-			padding: 5px 20px
-			&:hover
-				background-color: lighten( $menu_bg_color, 20)
-
-
-
-
-
-	
+			margin: auto
+			@media screen and (max-width: 768px) 
+				width: 100%
+				float: none
+				text-align: center
+			a
+				display: inline-block
+				padding: 0px 20px
+				line-height: $header_height_a
+				margin: ($header_height - $header_height_a ) /2 0
+				color: #003471
+				position: relative
+				text-transform: uppercase
+				@media screen and (max-width: 768px) 
+					margin: ($header_height - $header_height_a ) /5 0
+				&:hover
+					background-color: lighten( $menu_bg_color, 20)
+					color: #ffaa00
 .content
-	@include span(8 of 12) 
-	background-color: $content_bg_color
+	background: url("../img/bg_header.png")  
+	background-repeat: no-repeat
+	background-position: center center
+	background-size: cover
+	height: 840px
+	margin: 0 auto
+	width: auto
+	padding-top: 90px
+	@media screen and (max-width: 768px) 
+		@include span(12)
+		padding: 0
+		height: 460px
+.content_bg
+	width: 100%
+	height: 100%
+	background-color: rgba(0, 52, 113, 0.9)
+	color: #000
+	text-align: center
+
+.content_top
+	padding-top: 300px
+	@media screen and (max-width: 768px) 
+		padding-top: 150px
+.btn	
+	a
+		background-color: $btn_bg_color
+		color: #fff
+		display: block
+		width: 140px
+		height: 34px
+		margin: auto
+		line-height: 34px
+		text-transform: uppercase
+		border-radius: 3px
+		margin-top: 50px
+		box-shadow: 0px 1px 2px #000
+		&:hover
+			background-color: darken($btn_bg_color, 20%);
+.payer
+	position: absolute
+	bottom: 25px
+	width: 100%
+.btn_play_bg
+	background: rgba(#FFF, 0.25)
+	border-radius: 50%
+	display: inline-block
+	width: 62px 
+	height: 62px
+	border-radius: 50%
+	margin: 30px 20px 0
+	span
+		width: 44px;
+		height: 43px;
+		display: block;
+		margin: 10px auto;
+		position: relative
+		&:hover
+			background: rgba(#FFF, 0.5)
+			border-radius: 50%
+
+		
+.portfolio
+	position: relative
+	min-height: 810px
+.portfolio_bar
+	position: relative
+	width: 100%
+	display: inline-block
+	min-height: 90px
+	margin: auto
+	background-color: rgba(#ffaa00, 1)
+	li
+		height: 50px
+		top: 20px
+		position: relative
+		a
+			padding: 15px;
+			line-height: 50px;
+			color: #fff
+		&:hover a
+			color: #ffaa00
+			border-radius: 5px
+			background-color: #FFF
+		@media screen and (max-width: 768px) 
+			float: none
+			margin-bottom: 20px
+			top: 10px
+			
+.portfolio_left li
+	&:first-child 
+		border-right: 1px solid #fff
+	a
+		font-size: 26px;
+		font-family: "LatoLight";
+.portfolio_right 
 	float: right
-	@media screen and (max-width: 768px) 
-		@include span(12)
-article 
-	background-color: $art_bg_color
-
-.sidebar
-	@include span(4 of 12 last)  
-	background-color: $sb_bg_color
-	@media screen and (max-width: 768px) 
-		@include span(12)
-
-
-.slider
-	@include span(12)
-	background-color: $slider_bg_color	
-
-footer 
-	@include span(12) 
-	clear: both;
-	background-color: $ft_bg_color
-
-
-
+	li a
+		font-size: 18px
+	@media screen and (max-width: 920px) 
+		display: none		
+.portfolio_right li:hover span
+	width: 1px
+	height: 20px
+	background-color: #FFF			
+	position: absolute
+	left: 50%
+	top: 50px	
+.portfolio_wrap
+	@extend .wrap
+	background-color: #FFF
+	position: relative
+	clear: both
+	li
+		margin: 30px 15px 
+		height: 270px
+		width: 270px	
+		@media screen and (max-width: 1199px) 
+			display: inline-block
+			margin: 15px 
+			float: none
+.view
+	width: 270px
+	height: 270px
+	margin: 0px
+	display: inline-block
+	overflow: hidden
+	position: relative
+	text-align: center
+	.info 
+		text-decoration: none
+	.mask, .content_web
+		width: 270px
+		height: 270px
+		position: absolute
+		overflow: hidden
+		top: 0
+		left: 0
+.effect
+	.mask
+		opacity: 0
+		overflow: visible
+		border: 0px double rgba(0,0,0,0.7)
+		box-sizing: border-box
+		transition: all 0.4s ease-in-out
+	.info
+		position: absolute
+		top: 43%
+		left: 17%
+		opacity: 0
+		color: #fff
+		font-size: 30px
+		font-family: "LatoHairline"
+		transition: opacity 0.5s 0s ease-in-out
+		small
+			font-size: 16px
+			font-family: "LatoRegular"
+			text-transform: uppercase
+			position: relative
+			left: -10px
+	&:hover
+		.mask
+			opacity: 1
+			border: 135px solid rgba(0,0,0,0.7)
+	&:hover 
+		.info
+			opacity: 1
+			transition-delay: 0.3s
+.icon-play_while
+	position: absolute;
+	top: -2px;
+	right: -25px;			
+.section_df
+	width: 100%
+	position: relative
+	clear: left
+	background-color: #ffffff
+	color: #003471
+.about_us
+	@extend .section_df
+	min-height: 690px
+	position: relative
+	background-color: #003471
+	color: #fff
+.btn_df
+	width: 230px
+	height: 60px
+	display: inline-block
+	text-align: center
+	border: 1px solid #fff
+	margin: 60px auto
+	position: relative
+	border-radius: 8px
+	a
+		color: #fff
+		font-family: "LatoLight"
+		font-size: 40px
+	&:hover
+		background-color:  lighten(#003471, 10%)
 
 	
+	span 			
+		width: 1px
+		height: 60px
+		background-color: #FFF
+		position: absolute
+		left: 50%
+		bottom: 59px
+.btn_blue
+	border: 1px solid #003471
+	&:hover
+		background-color: darken(#fff, 10%)
+	a
+		color: #003471
+	span 			
+		background-color: #003471	
+.about_article
+	display: inline-block
+	font-size: 14px
+	padding: 0 20px
+.about_icon
+	display: inline-block
+	position: relative
+.about_icon_item
+	width: 170px
+	height: 170px
+	border: 1px solid #fff
+	border-radius: 50%
+	margin: 70px  15px 
+	float: left
+	@media screen and (max-width: 610px) 
+		float: none
+		margin: 20px  15px  90px
+
+	span
+		top: 25px
+		position: relative
+		font-size: 20px
+.about_icon-bg
+	background-color: #ebebeb
+	width: 150px
+	height: 150px	
+	background-repeat: no-repeat
+	border-radius: 50%
+	border: 10px solid #fff
+	margin: 10px
+	position: relative	
+.icon-paint, .icon-map, .icon-comp
+	position: relative
+	top: 30px
+	left: 27px
+.team
+	min-height: 750px
+.team_detalis
+	color: #003471
+	font-size: 14px
+	font-family: "LatoLight"
+	margin: 0 40px
+.team_icon
+	@extend .section_df
+	li
+		height: 365px
+		display: inline-block
+		width: 170px
+		float: none
+		margin: 50px 14px 
+		@media screen and (max-width: 480px) 
+			margin: 25px 14px 
+.team_icon_item
+	@extend .about_icon_item
+	border: 10px solid #ccc
+	padding: 10px
+	margin: 0
+	img
+		width: 130px	
+		height: 130px
+		border-radius: 50%
+.team_label
+	width: 170px
+	top: 35px
+	left: -20px
+	position: relative
+	text-transform: uppercase
+	.user_name
+		font-size: 14px
+		color: #003471
+		font-family: "LatoBold"
+	span 
+		font-size: 14px	
+		font-family: "LatoRegular"
+		top: 0
+		color: #ffaa00
+	p
+		font-size: 14px
+		text-transform: none
+		font-family: "LatoLight"
+		color: #959595
+.icon_social
+	display: inline-block
+	position: relative
+	li 
+		background-color: #ccc
+		color: #fff
+		width: 28px
+		height: 28px
+		border-radius: 50%
+		margin: 12px 4px
+		font-size: 20px
+		float: left
+		&:hover
+			background-color: #ffaa00
+.clients
+	@extend .about_us
+	min-height: 450px
+	li
+		width: 270px
+		height: 215px
+		float: none
+		margin: auto 13px
+		display: inline-block
+		.icon-items
+			height: 80px
+			display: inline-flex
+			vertical-align: middle
+			margin: auto
+.clients_comment
+	font-size: 14px
+	color: #fff
+	font-family: "LatoLight"
+.icon-speach 
+	display: block
+	position: relative
+	left: 236px
+	margin: 15px 0 10px
+.contact
+	height: 450px
+	background-image: url("../img/bg_contact.png")
+	background-repeat: no-repeat
+	background-position: center
+	background-clip: cover
+	text-align: center
+.contact_btn
+	@extend .section_df
+.contact_wrap
+	@include span(6)
+	padding: 0
+	min-height: 250px
+	text-align: center
+	li
+		width: 170px
+		text-align: left
+		margin: 0 15px
+		@media screen and (max-width: 1199px) 
+			float: none
+		span
+			color: #003471
+			font-size: 14px
+			font-family: "LatoRegular"
+			font-style: normal
+		address, a
+			margin: 0
+			color: #959595
+			float: left
+			font-family: "LatoLight"
+	@media screen and (max-width: 1199px) 
+		@include span(12)
+	input
+		height: 45px
+		width: 270px
+		margin: 5px 14px 20px
+	textarea
+		padding: 5px 15px 
+		height: 80px
+		width: 100%
+		max-width: 570px
+.contact_social
+	width: 240px
+	height: 40px
+	position: relative
+	margin: auto
+	text-align: center
+	clear: left
+	li
+		width: 40px
+		height: 40px
+		float: left
+		background-color: #5fc
+		border-radius: 50%
+		margin: 40px 10px 30px
+.btn_send
+	width: 140px
+	height: 45px
+	line-height: 45px
+	font-size: 16px
+	font-family: "LatoRegular"
+	text-align: center
+	margin: 20px auto
+	display: inherit
+	text-transform: uppercase
+	color: #ffaa00
+	background-color: #fff
+	box-shadow: 0px 2px 2px rgba(0,0,0,.25)
+	&:hover
+		background-color: darken(#fff, 10%)	
+
+.footer
+	background-color: #003471
+	min-height: 240px
+	position: relative
+	clear: left
+	@media screen and (max-width: 768px) 
+		height: 100%
+.footer_nav_bg
+	background-color: #ffaa00
+	line-height: 60px
+	text-align: center
+	li
+		display: inline-block
+		float: none
+		a
+			text-transform: uppercase
+			font-size: 14px
+			font-family: "LatoRegular"
+			color: #fff
+			margin: 15px
+.copyright
+	text-align: center
+	color: #fff
+	margin-top: 30px
+	text-transform: uppercase
+	font-size: 14px
