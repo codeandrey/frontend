@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+	//Асинхронная загрузка CSS 
+$("head").append("<link rel='stylesheet' type='text/css' href='css/style.min.css'/>");
 //анимируем переход по якорю
   $("#menu, #footer_nav").on("click","a", function (event) {
         //отменяем стандартную обработку нажатия по ссылке
